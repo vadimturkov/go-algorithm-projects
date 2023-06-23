@@ -2,20 +2,13 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"github.com/vadimturkov/go-algorithm-projects/util"
 )
 
 func main() {
 	for {
-		a, err := getInput("Enter value A: ")
-		if err != nil {
-			exitWithError(err)
-		}
-
-		b, err := getInput("Enter value B: ")
-		if err != nil {
-			exitWithError(err)
-		}
+		a := util.GetIntInputOrExit("Enter value A: ")
+		b := util.GetIntInputOrExit("Enter value B: ")
 
 		if a < 1 || b < 1 {
 			break
@@ -24,18 +17,6 @@ func main() {
 		fmt.Printf("GCD: %d\n", gcd(a, b))
 		fmt.Printf("LCM: %d\n", lcm(a, b))
 	}
-}
-
-func getInput(prompt string) (int, error) {
-	var value int
-	fmt.Print(prompt)
-	_, err := fmt.Scanln(&value)
-	return value, err
-}
-
-func exitWithError(err error) {
-	fmt.Printf("Invalid input: %v. Exiting...\n", err)
-	os.Exit(1)
 }
 
 func gcd(a, b int) int {
