@@ -9,7 +9,8 @@ import (
 func sieveOfEratosthenes(max int) []bool {
 	sieve := make([]bool, max+1)
 
-	for i := range sieve {
+	sieve[2] = true
+	for i := 3; i <= max; i += 2 {
 		sieve[i] = true
 	}
 
